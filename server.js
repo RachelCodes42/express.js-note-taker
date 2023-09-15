@@ -5,6 +5,8 @@ const path = require('path');
 const htmlRoutes = require('./routes/htmlRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 
+
+
 // Specify on which port the Express.js server will run
 const PORT = 3001;
 
