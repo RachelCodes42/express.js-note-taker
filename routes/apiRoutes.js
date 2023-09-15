@@ -17,7 +17,8 @@ const readAndAppend = (content, file) => {
       }
     });
   };
-
+  const { Router } = require('express');
+  
 // GET post or delete with api's
 router.get('/api/notes', (req, res) => 
   res.sendFile(path.join(__dirname, './db/db.json'))
@@ -25,6 +26,20 @@ router.get('/api/notes', (req, res) =>
 router.get('/', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
   });
+
+  // GET Route for a specific note
+router.get('/:router_id', (req, res) => {
+    const routerId = req.params.router_id;
+    readFromFile('./db/db.json')
+      .then((data) => JSON.parse(data))
+      .then((json) => {
+        const result = json.filter((tip) => router.router_id === routerId);
+        return result.length > 0
+          ? res.json(result)
+          : res.json('No route with that ID');
+      });
+  });
+
 // POST Route for a new UX/UI router
 router.post('/api/notes', (req, res) => {
     console.log(req.body);
