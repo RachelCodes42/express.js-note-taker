@@ -37,6 +37,12 @@ Welcome to the Note-Taker Application! This application is designed to help smal
 
 9. To create a new note, click on the Write icon in the navigation.
 
+
+    ![alt text](public/assets/images/screenshot1.png)
+    ![alt text](public/assets/images/screenshot2.png)
+    ![alt text](public/assets/images/screenshot3.png)
+    
+
 ## License
 <!-- Add license badge and explanation here -->
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)(http://opensource.org/licenses/MIT)
