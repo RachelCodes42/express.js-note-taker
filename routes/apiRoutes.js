@@ -18,27 +18,27 @@ const readAndAppend = (content, file) => {
     });
   };
   const { Router } = require('express');
-  
+
 // GET post or delete with api's
 router.get('/api/notes', (req, res) => 
-  res.sendFile(path.join(__dirname, './db/db.json'))
+  res.sendFile(path.join(__dirname, '../db/db.json'))
 );
-router.get('/', (req, res) => {
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
-  });
+// router.get('/', (req, res) => {
+//     readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+//   });
 
   // GET Route for a specific note
-router.get('/:router_id', (req, res) => {
-    const routerId = req.params.router_id;
-    readFromFile('./db/db.json')
-      .then((data) => JSON.parse(data))
-      .then((json) => {
-        const result = json.filter((tip) => router.router_id === routerId);
-        return result.length > 0
-          ? res.json(result)
-          : res.json('No route with that ID');
-      });
-  });
+// router.get('/:router_id', (req, res) => {
+//     const routerId = req.params.router_id;
+//     readFromFile('./db/db.json')
+//       .then((data) => JSON.parse(data))
+//       .then((json) => {
+//         const result = json.filter((tip) => router.router_id === routerId);
+//         return result.length > 0
+//           ? res.json(result)
+//           : res.json('No route with that ID');
+//       });
+//   });
 
 // POST Route for a new UX/UI router
 router.post('/api/notes', (req, res) => {
@@ -61,21 +61,37 @@ router.post('/api/notes', (req, res) => {
   });
 
 // DELETE Route for a specific router
-router.delete('/api/notes')
-router.delete('/:router_id', (req, res) => {
-    const routerId = req.params.router_id;
-    readFromFile('./db/router.json')
-      .then((data) => JSON.parse(data))
-      .then((json) => {
-        // Make a new array of all routers except the one with the ID provided in the URL
-        const result = json.filter((router) => router.router_id !== routerId);
-  
-        // Save that array to the filesystem
-        writeToFile('./db/router.json', result);
-  
-        // Respond to the DELETE request
-        res.json(`Item ${routerId} has been deleted 🗑️`);
+router.delete('/api/notes/:id',
+ (req, res) => {
+    console.log(req.params.id)
+    // const routerId = req.params.router_id;
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+        } else {
+            // console.log(data);
+            newNotes=[]
+          const parsedData = JSON.parse(data);
+          for (let i = 0; i < parsedData.length; i++) {
+            console.log(parsedData[i]);
+        //if parsed data [i] does not = req.params.id then push to new notes, then write new notes array
+          }
+    //       parsedData.push(content);
+    //       writeToFile(file, parsedData);
+        }
       });
+    // readFromFile('./db/db.json')
+    //   .then((data) => JSON.parse(data))
+    //   .then((json) => {
+    //     // Make a new array of all routers except the one with the ID provided in the URL
+    //     const result = json.filter((router) => router.router_id !== routerId);
+  
+    //     // Save that array to the filesystem
+    //     writeToFile('./db/db.json', result);
+  
+    //     // Respond to the DELETE request
+    //     res.json(`Item ${routerId} has been deleted 🗑️`);
+    //   });
   });
   
   ;
