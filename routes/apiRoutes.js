@@ -74,10 +74,13 @@ router.delete('/api/notes/:id',
           const parsedData = JSON.parse(data);
           for (let i = 0; i < parsedData.length; i++) {
             console.log(parsedData[i]);
+            if (parsedData[i].id !=req.params.id){
+                newNotes.push(parsedData[i]);
+            }
         //if parsed data [i] does not = req.params.id then push to new notes, then write new notes array
           }
-    //       parsedData.push(content);
-    //       writeToFile(file, parsedData);
+          console.log(newNotes)
+          writeToFile('./db/db.json', newNotes);
         }
       });
     // readFromFile('./db/db.json')
