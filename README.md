@@ -2,7 +2,7 @@
 # Express.js Note Taker
 
 ## Description
-Welcome to the Note-Taker Application! This application is designed to help small business owners organize their thoughts, keep track of tasks, and write and save notes easily. It fulfills specific user stories to provide a seamless note-taking experience.
+Welcome to the Note-Taker Application! This application is designed to help small business owners organize their thoughts, keep track of tasks, and write and save notes easily. It fulfills specific user stories to provide a seamless note-taking experience via Heroku.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -42,6 +42,7 @@ Welcome to the Note-Taker Application! This application is designed to help smal
     ![alt text](public/assets/images/screenshot2.png)
     ![alt text](public/assets/images/screenshot3.png)
     
+Deployment Link: https://stormy-cove-10323-2c7cdb6dee1d.herokuapp.com/ 
 
 ## License
 <!-- Add license badge and explanation here -->
